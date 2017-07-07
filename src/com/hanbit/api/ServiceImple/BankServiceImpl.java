@@ -10,9 +10,8 @@ import com.hanbit.api.Interface.BankService;
 public class BankServiceImpl implements BankService {
 	
 	Vector<BankBean> vec;
-	
-	public BankServiceImpl(long BankBean) {
-		Random r1=new Random(BankBean);
+	BankBean bean;
+	public BankServiceImpl() {
 		vec = new Vector<BankBean>(10, 10);
 	}
 
@@ -22,11 +21,14 @@ public class BankServiceImpl implements BankService {
 	public void createBank(BankBean bean) {
 		// 계좌개설
 		int randomNO=(int)(Math.random()*99999999+10000000);
+		bean.setAccountNo(randomNO);
 		Calendar now=Calendar.getInstance();
 		int yy=now.get(now.YEAR);
-		int mm=now.get(now.MONTH);
+		int mm=now.get(now.MONTH);//+1;
 		int dd=now.get(now.DAY_OF_MONTH);
-		vec.add(bean);
+		String date=String.valueOf(yy+"년"+mm+"월"+dd+"일");
+		bean.setDate(date);
+		 vec.add(bean);
 	}
 
 	@Override
@@ -41,7 +43,7 @@ public class BankServiceImpl implements BankService {
 		Vector<BankBean> temp=new Vector<BankBean>(10,10);
 		for(int i=0;i<temp.size();i++){
 			if(name.equals(vec.get(i).getName())){
-				
+						temp.add(bean);
 			}
 		}
 		return vec ;
@@ -50,8 +52,14 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public BankBean findByAccountNo(int accountNo) {
 //계좌조회
-		Vector<BankBean> temp=new Vector<BankBean>(10,10);
-	
+		bean=new BankBean();
+		for(int i=0;i<vec.size();i++){
+		//	if(vec.get(i).getAccountNo()==bean.accounNo){
+				
+			}
+	//	}
+			
+		
 		return null;
 	}
 
@@ -64,7 +72,9 @@ public class BankServiceImpl implements BankService {
 	@Override
 	public void updatePassword(BankBean bean) {
 		//비밀번호변경
+//		findByAccountNo(bean.get)
 	}
+	
 
 	@Override
 	public void deposit(BankBean bean) {

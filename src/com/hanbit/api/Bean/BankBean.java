@@ -47,7 +47,7 @@ public class BankBean {
 		this.accountNo = accountNo;
 	}
 	
-	public int accountNo() {
+	public int getAccountNo() {
 		return accountNo;
 	}
 	public void setMoney(int money) {
@@ -57,7 +57,7 @@ public class BankBean {
 		return money;
 	}
 	public String toString(){
-		return String.format( "계좌정보[이름:%s 아이디:%s 비밀번호:%s 주민등록번호:%s ]" ,name,id,password,ssn);
+		return String.format( "계좌정보[이름:%s 아이디:%s  주민등록번호:%s  입금액%s  %s]" ,name,id,ssn,money,accountNo);
 	}
 
 }
